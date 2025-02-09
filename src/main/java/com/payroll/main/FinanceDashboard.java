@@ -142,6 +142,10 @@ public class FinanceDashboard extends javax.swing.JFrame {
         pagibigLabelValue.setText(pagIbig);
         sssLabelValue.setText(sss);
         philhealthLabelValue.setText(philhealth);
+        
+        if(empAccount.getEmpDetails().getEmpBirthday() != null){
+             bdayLabelValue.setText(formatter.format(empAccount.getEmpDetails().getEmpBirthday()));
+        }
 
         if(empAccount.getEmpDetails().getEmpImmediateSupervisor() != null){
             supervisorLabelValue.setText(empAccount.getEmpDetails().getEmpImmediateSupervisor().getFormattedName());
@@ -452,7 +456,7 @@ public class FinanceDashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        header.setBackground(new java.awt.Color(255, 51, 51));
+        header.setBackground(new java.awt.Color(0, 0, 153));
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -499,7 +503,7 @@ public class FinanceDashboard extends javax.swing.JFrame {
 
         navigation.setBackground(new java.awt.Color(102, 102, 102));
 
-        jButton1.setBackground(new java.awt.Color(255, 102, 0));
+        jButton1.setBackground(new java.awt.Color(0, 0, 153));
         jButton1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/headphones-6-16.png"))); // NOI18N

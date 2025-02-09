@@ -112,6 +112,10 @@ public class ITDashboard extends javax.swing.JFrame {
         pagibigLabelValue.setText(pagIbig);
         sssLabelValue.setText(sss);
         philhealthLabelValue.setText(philhealth);
+        
+        if(empAccount.getEmpDetails().getEmpBirthday() != null){
+             bdayLabelValue.setText(formatter.format(empAccount.getEmpDetails().getEmpBirthday()));
+        }
 
         if(empAccount.getEmpDetails().getEmpImmediateSupervisor() != null){
             supervisorLabelValue.setText(empAccount.getEmpDetails().getEmpImmediateSupervisor().getFormattedName());
