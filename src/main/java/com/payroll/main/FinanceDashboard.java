@@ -44,7 +44,7 @@ import org.apache.commons.lang3.StringUtils;
  */
 
 
-public class MainDashboard extends javax.swing.JFrame {
+public class FinanceDashboard extends javax.swing.JFrame {
     private DatabaseConnection dbConnection;
     private CardLayout cardLayout;
     private EmployeeAccount empAccount;
@@ -54,7 +54,7 @@ public class MainDashboard extends javax.swing.JFrame {
     private LeaveDetailsService leaveDetailsService;
     private Integer employeeSearchID;
     
-    public MainDashboard(EmployeeAccount empAccount) {
+    public FinanceDashboard(EmployeeAccount empAccount) {
         initComponents();
         cardLayout = (CardLayout)(mphCards.getLayout());
         this.empAccount=empAccount;
@@ -94,7 +94,7 @@ public class MainDashboard extends javax.swing.JFrame {
         loadAllMonths();
         
     }
-    public MainDashboard(){
+    public FinanceDashboard(){
         
     }
     public EmployeeAccount getEmpAccount() {
@@ -2740,21 +2740,23 @@ public class MainDashboard extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FinanceDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FinanceDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FinanceDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FinanceDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainDashboard().setVisible(true);
+                new FinanceDashboard().setVisible(true);
             }
         });
     }

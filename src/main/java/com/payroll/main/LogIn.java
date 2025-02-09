@@ -6,7 +6,7 @@ package com.payroll.main;
 
 import com.payroll.domain.EmployeeAccount;
 import javax.swing.JOptionPane;
-import com.payroll.main.MainDashboard;
+import com.payroll.main.HRDashboard;
 import com.payroll.services.EmployeeAccountService;
 import com.payroll.util.DatabaseConnection;
 import javax.swing.JOptionPane;
@@ -258,8 +258,12 @@ public class LogIn extends javax.swing.JFrame {
         } else {
              JOptionPane.showMessageDialog(null, "Login Successful");
              JFrame dashboard = null;
-             if("Admin".equals(empAccount.getUserRole().getRole())) {
-                dashboard = new MainDashboard(empAccount);
+             if("HR".equals(empAccount.getUserRole().getRole())) {
+                dashboard = new HRDashboard(empAccount);
+             }else if("Finance".equals(empAccount.getUserRole().getRole())) {
+                dashboard = new FinanceDashboard(empAccount);
+             }else if("IT".equals(empAccount.getUserRole().getRole())) {
+                dashboard = new ITDashboard(empAccount);
              }else{
                 dashboard = new EmployeeDashboard(empAccount);  
              }

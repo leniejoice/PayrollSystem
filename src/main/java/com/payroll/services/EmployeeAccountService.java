@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javax.management.Query;
 
 /**
  *
@@ -109,13 +110,14 @@ public class EmployeeAccountService {
     
     public void updateEmployeeAccount(EmployeeAccount empAccount){
         if(connection !=null){
-            String Query = "UPDATE public.employee_account SET username = ?, password = ? where employee_id = ?";
+            String Query = "UPDATE public.employee_account SET username = ?, password = ? WHERE employee_id = ?";
         
             try{
                 PreparedStatement preparedStatement = connection.prepareStatement(Query);
                 preparedStatement.setString(1,empAccount.getEmpUserName());
                 preparedStatement.setString(2,empAccount.getEmpPassword());
                 preparedStatement.setInt(3,empAccount.getEmpID());
+                
 
                 preparedStatement.executeUpdate();
                 preparedStatement.close();
@@ -124,6 +126,34 @@ public class EmployeeAccountService {
             }                                   
         }
     }
+    
+    public void updateEmployeeAccountIT(EmployeeAccount empAccount) {
+        if (connection == null) {
+            throw new IllegalStateException("Database connection is not established.");
+        }
+
+        Integer roleId = (empAccount.getUserRole() != null) ? empAccount.getUserRole().getId() : null;
+        String query = "UPDATE public.employee_account SET username = ?, password = ?, role_id = ? WHERE employee_id = ?";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, empAccount.getEmpUserName());
+            preparedStatement.setString(2, empAccount.getEmpPassword());
+
+            // Handle roleId safely
+            if (roleId != null) {
+                preparedStatement.setInt(3, roleId);
+            } else {
+                preparedStatement.setNull(3, java.sql.Types.INTEGER);
+            }
+
+            preparedStatement.setInt(4, empAccount.getEmpID());
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace(); // Consider logging instead of printing stack trace
+        }
+    }
+    
      
     public List<EmployeeAccount> getAllUserAccount(){
         List<EmployeeAccount> allEmployeeAccount = new ArrayList<>();
@@ -155,6 +185,50 @@ public class EmployeeAccountService {
         }                          
         return allEmployeeAccount;
     }
+    
+    public List<UserRole> getAllUserRole(){
+        List<UserRole> userRoles = new ArrayList<>();
+        if (connection != null) {
+        String Query = "SELECT * FROM public.user_roles";
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(Query);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()){
+                    UserRole userRole = new UserRole();
+                    userRole.setId(resultSet.getInt("id"));
+                    userRole.setRole(resultSet.getString("role"));
+                    userRoles.add(userRole);
+                }
+                resultSet.close();
+                preparedStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }         
+        }                          
+        return userRoles;
+    }
+    
+    public UserRole getByRolesId(int id){
+        UserRole userRole =null;
+        if (connection != null) {
+            String Query = "SELECT * FROM public.user_roles where id = ?";
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(Query);
+                preparedStatement.setInt(1,id);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                userRole = new UserRole();
+                while (resultSet.next()) {
+                    userRole.setId(resultSet.getInt("id"));
+                    userRole.setRole(resultSet.getString("role"));
+                }
+                resultSet.close();
+                preparedStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }             
+        }                          
+        return userRole;
+    } 
    
     
     public EmployeeDetails saveUserAccount(EmployeeAccount empAccount,EmployeeDetails empDetails){

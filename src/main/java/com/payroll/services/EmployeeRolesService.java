@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -48,4 +50,26 @@ public class EmployeeRolesService {
         }                          
         return userRole;
     } 
+    
+    public List<UserRole> getAllUserRole(){
+        List<UserRole> userRoles = new ArrayList<>();
+        if (connection != null) {
+        String Query = "SELECT * FROM public.user_roles";
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(Query);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()){
+                    UserRole userRole = new UserRole();
+                    userRole.setId(resultSet.getInt("id"));
+                    userRole.setRole(resultSet.getString("role"));
+                    userRoles.add(userRole);
+                }
+                resultSet.close();
+                preparedStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }         
+        }                          
+        return userRoles;
+    }
 }
