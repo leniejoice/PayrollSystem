@@ -12,23 +12,12 @@ import java.util.Date;
  *
  * @author leniejoice 
  */
-public class EmployeeHours {
+public class EmployeeHours extends Person implements HoursInfo {
 
-
-    private int empID;
     private Date date;
     private LocalTime timeIn;
     private LocalTime timeOut;
     private int id;
-    
-
-    public int getEmpID() {
-        return empID;
-    }
-
-    public void setEmpID(int empID) {
-        this.empID = empID;
-    }
 
     public Date getDate() {
         return date;
@@ -54,7 +43,6 @@ public class EmployeeHours {
         this.timeOut = timeOut;
     }
 
-
     public int getId() {
         return id;
     }
@@ -63,14 +51,15 @@ public class EmployeeHours {
         this.id = id;
     }
     
+    @Override
     public String getFormattedHoursWorked(){
         long secondsDuration = getHoursWorked();
         return String.format("%d:%02d", secondsDuration / 3600, (secondsDuration % 3600) / 60);
     }
     
+    @Override
     public long getHoursWorked(){
         return (Duration.between(timeIn, timeOut).minus(timeIn.equals(LocalTime.MIDNIGHT) ? Duration.ZERO: Duration.ofHours(1))).toSeconds();
     }
     
 }
-

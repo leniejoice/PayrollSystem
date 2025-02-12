@@ -14,16 +14,9 @@ import java.util.List;
  *
  * @author leniejoice
  */
-public class EmployeeDetails {
-
+public class EmployeeDetails extends Person implements EmployeeInfo {
 
     //employee details
-    private int empID;
-    private String lastName; 
-    private String firstName;
-    private Date empBirthday;
-    private String empAddress;
-    private String empPhoneNumber;
     private EmployeeStatus empStatus;
     private EmployeePosition empPosition;
     private EmployeeDetails empImmediateSupervisor;
@@ -56,88 +49,6 @@ public class EmployeeDetails {
             
             
     //end
-
-    public int getEmpID() {
-        return empID;
-    }
-
-    public void setEmpID(int empID) {
-        this.empID = empID;
-    }
-    
-
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public Date getEmpBirthday() {
-        return empBirthday;
-    }
-
-    public void setEmpBirthday(Date empBirthday) {
-        this.empBirthday = empBirthday;
-    }
-
-    public String getEmpAddress() {
-        return empAddress;
-    }
-
-    public void setEmpAddress(String empAddress) {
-        this.empAddress = empAddress;
-    }
-
-    public String getEmpPhoneNumber() {
-        return empPhoneNumber;
-    }
-
-    public void setEmpPhoneNumber(String empPhoneNumber) {
-        this.empPhoneNumber = empPhoneNumber;
-    }
-
-    public String getEmpSSS() {
-        return empSSS;
-    }
-
-    public void setEmpSSS(String empSSS) {
-        this.empSSS = empSSS;
-    }
-
-    public long getEmpPhilHealth() {
-        return empPhilHealth;
-    }
-
-    public void setEmpPhilHealth(long empPhilHealth) {
-        this.empPhilHealth = empPhilHealth;
-    }
-
-    public String getEmpTIN() {
-        return empTIN;
-    }
-
-    public void setEmpTIN(String empTIN) {
-        this.empTIN = empTIN;
-    }
-
-    public long getEmpPagibig() {
-        return empPagibig;
-    }
-
-    public void setEmpPagibig(long empPagibig) {
-        this.empPagibig = empPagibig;
-    }
 
     public EmployeeStatus getEmpStatus() {
         return empStatus;
@@ -211,13 +122,15 @@ public class EmployeeDetails {
         this.empHourlyRate = empHourlyRate;
     }
     
+    @Override
     public String getFormattedName(){
-        return (firstName+" "+lastName).trim();
+        return (getFirstName() + " " + getLastName()).trim();
     }
     
+    @Override
     public String getFormattedBirthday(){
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        return this.empBirthday != null ? formatter.format(this.empBirthday) : null;
+        return this.getEmpBirthday() != null ? formatter.format(this.getEmpBirthday()) : null;
     }
    /* @Override 
     public String toString(){
