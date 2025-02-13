@@ -8,7 +8,7 @@ package com.payroll.domain;
  *
  * @author leniejoice
  */
-public class EmployeeAccount {
+public class EmployeeAccount extends Person implements AccountInfo {
     private int accountID;
     private int empID;
     private String empUserName; 
@@ -38,17 +38,20 @@ public class EmployeeAccount {
         return accountID;
     }
     
-    public int getEmpID() {
-        return empID;
-    }
-
-    public void setEmpID(int empID) {
-        this.empID = empID;
-    }
-
     public void setAccountID(int accountID) {
         this.accountID = accountID;
     }
+    
+    @Override
+    public int getEmpID() {
+        return empID;
+    }
+    
+     public void setEmpID(int empID) {
+        this.empID = empID;
+    }
+    
+    @Override
     public String getEmpUserName() {
         return empUserName;
     }
@@ -56,8 +59,10 @@ public class EmployeeAccount {
     public void setEmpUserName(String empUserName) {
         this.empUserName = empUserName;
     }
+  
     
-     public String getEmpPassword() {
+    @Override
+    public String getEmpPassword() {
         return empPassword;
     }
 
@@ -72,6 +77,8 @@ public class EmployeeAccount {
     public void setEmpDetails(EmployeeDetails empDetails) {
         this.empDetails = empDetails;
     }
+    
+    
     
     
 }

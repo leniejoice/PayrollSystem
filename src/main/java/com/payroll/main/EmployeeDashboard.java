@@ -92,9 +92,9 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         usernameLabel.setText("@"+ empAccount.getEmpUserName()); 
         fullNameValue.setText(empAccount.getEmpDetails().getFormattedName());
         fullNameValue2.setText(empAccount.getEmpDetails().getFormattedName());
-        empNumValue.setText(String.valueOf(empAccount.getEmpDetails().getEmpID()));
-        empIDLabelValue.setText(String.valueOf(empAccount.getEmpDetails().getEmpID()));
-        addressLabelValue.setText(empAccount.getEmpDetails().getEmpAddress());
+        empNumValue.setText(String.valueOf(empAccount.getEmpID()));
+        empIDLabelValue.setText(String.valueOf(empAccount.getEmpID()));
+        addressLabelValue.setText(empAccount.getEmpAddress());
         phoneLabelValue.setText(phone);
         basicSalaryLabelValue.setText("PHP " + String.valueOf(empAccount.getEmpDetails().getEmpBasicSalary()));
         riceLabelValue.setText("PHP " + String.valueOf(empAccount.getEmpDetails().getEmpRice()));
@@ -129,9 +129,9 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         }
         
         ///payroll
-        empIDPayLabelValue.setText(String.valueOf(empAccount.getEmpDetails().getEmpID()));
+        empIDPayLabelValue.setText(String.valueOf(empAccount.getEmpID()));
         namePayLabelValue.setText(empAccount.getEmpDetails().getFormattedName());
-        //addressPayLabelValue.setText(empAccount.getEmpDetails().getEmpAddress());
+        //addressPayLabelValue.setText(empAccount.getEmpAddress());
         
         hourlyRatePayLabelValue.setText(String.valueOf(empAccount.getEmpDetails().getEmpHourlyRate()));
         ricePayLabelValue.setText(String.valueOf(empAccount.getEmpDetails().getEmpRice()));
@@ -605,7 +605,6 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         bdayLabelValue.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
         philhealthLabelValue.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        philhealthLabelValue.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         philhealthLabelValue.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         philhealthLabelValue.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
@@ -1222,31 +1221,28 @@ public class EmployeeDashboard extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(totalDeductionsPayLabelValue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel9Layout.createSequentialGroup()
-                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel9Layout.createSequentialGroup()
-                                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                                .addComponent(clothingPayLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGap(27, 27, 27))
-                                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(ricePayLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                        .addComponent(totalAllowPayLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(deductionsPayLabel)
-                                                        .addComponent(phonePayLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                                .addGap(37, 37, 37)))
+                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel9Layout.createSequentialGroup()
+                                        .addComponent(clothingPayLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(27, 27, 27))
+                                    .addGroup(jPanel9Layout.createSequentialGroup()
                                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(totalAllowPayLabelValue, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(clothingPayLabelValue, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(phonePayLabelValue, javax.swing.GroupLayout.Alignment.TRAILING))
-                                            .addComponent(ricePayLabelValue, javax.swing.GroupLayout.Alignment.TRAILING)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel9Layout.createSequentialGroup()
-                                        .addComponent(pagibigContriPayLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(pagibigContriPayLabelValue, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                            .addComponent(ricePayLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(totalAllowPayLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(deductionsPayLabel)
+                                                .addComponent(phonePayLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addGap(37, 37, 37)))
+                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(totalAllowPayLabelValue, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(clothingPayLabelValue, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(phonePayLabelValue, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addComponent(ricePayLabelValue, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel9Layout.createSequentialGroup()
+                                .addComponent(pagibigContriPayLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(pagibigContriPayLabelValue, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel9Layout.createSequentialGroup()
                         .addComponent(allowPayLabel)
