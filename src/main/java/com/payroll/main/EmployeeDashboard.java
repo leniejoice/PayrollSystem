@@ -1366,7 +1366,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addComponent(salarySlips)
                 .addGap(30, 30, 30)
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
