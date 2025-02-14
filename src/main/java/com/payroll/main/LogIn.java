@@ -252,24 +252,7 @@ public class LogIn extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please fill out all fields.");
             return;
         }
-        /*EmployeeAccount empAccount = empAccountService.getUserAccount(username,password);
-        if (empAccount==null){
-             JOptionPane.showMessageDialog(null, "Wrong username or password!", "Login Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-             JOptionPane.showMessageDialog(null, "Login Successful");
-             JFrame dashboard = null;
-             if("HR".equals(empAccount.getUserRole().getRole())) {
-                dashboard = new HRDashboard(empAccount);
-             }else if("Finance".equals(empAccount.getUserRole().getRole())) {
-                dashboard = new FinanceDashboard(empAccount);
-             }else if("IT".equals(empAccount.getUserRole().getRole())) {
-                dashboard = new ITDashboard(empAccount);
-             }else{
-                dashboard = new EmployeeDashboard(empAccount);  
-             }
-             dashboard.setVisible(true);
-             this.dispose();
-        }*/
+        
         EmployeeAccount empAccount = empAccountService.getUserAccount(username, password);
         if (empAccount == null) {
             JOptionPane.showMessageDialog(null, "Wrong username or password!", "Login Error", JOptionPane.ERROR_MESSAGE);
