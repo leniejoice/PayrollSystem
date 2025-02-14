@@ -252,7 +252,7 @@ public class LogIn extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please fill out all fields.");
             return;
         }
-        EmployeeAccount empAccount = empAccountService.getUserAccount(username,password);
+        /*EmployeeAccount empAccount = empAccountService.getUserAccount(username,password);
         if (empAccount==null){
              JOptionPane.showMessageDialog(null, "Wrong username or password!", "Login Error", JOptionPane.ERROR_MESSAGE);
         } else {
@@ -269,7 +269,51 @@ public class LogIn extends javax.swing.JFrame {
              }
              dashboard.setVisible(true);
              this.dispose();
-        }   
+        }*/
+        EmployeeAccount empAccount = empAccountService.getUserAccount(username, password);
+        if (empAccount == null) {
+            JOptionPane.showMessageDialog(null, "Wrong username or password!", "Login Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Login Successful");
+            JFrame dashboard = null;
+            String role = empAccount.getUserRole().getRole();
+
+            if ("HR".equals(role) || "Finance".equals(role) || "IT".equals(role)) {
+                int choice = JOptionPane.showOptionDialog(
+                    null, 
+                    "Login as Employee or " + role + "?", 
+                    "Role Selection", 
+                    JOptionPane.YES_NO_OPTION, 
+                    JOptionPane.QUESTION_MESSAGE, 
+                    null, 
+                    new String[]{"Employee", role}, 
+                    "Employee"
+                );
+
+                if (choice == 0) { 
+                    dashboard = new EmployeeDashboard(empAccount);
+                } else {
+                    switch (role) {
+                        case "HR":
+                            dashboard = new HRDashboard(empAccount);
+                            break;
+                        case "Finance":
+                            dashboard = new FinanceDashboard(empAccount);
+                            break;
+                        case "IT":
+                            dashboard = new ITDashboard(empAccount);
+                            break;
+                    }
+                }
+            } else {
+                dashboard = new EmployeeDashboard(empAccount);
+            }
+
+            if (dashboard != null) {
+                dashboard.setVisible(true);
+                this.dispose();
+            }
+        }
     }//GEN-LAST:event_bloginActionPerformed
 
     private void jpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpasswordActionPerformed
